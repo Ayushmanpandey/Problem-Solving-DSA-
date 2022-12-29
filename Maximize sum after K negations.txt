@@ -1,0 +1,51 @@
+#User function Template for python3
+
+class Solution:
+    def get_sum(self,a):
+        ans_sum = 0
+        for i in a:
+            ans_sum += i
+        return ans_sum
+        
+    def maximizeSum(self, a, n, k):
+    # Your code goes here
+        a.sort()
+        for i in range(len(a)):
+            if a[i] < 0 and k != 0:
+                a[i] = a[i] * -1
+                k -= 1
+        ans_sum = self.get_sum(a)
+        if not k % 2 == 0:
+            min_el = min(a)
+            idx = a.index(min_el)
+            a[idx] = -a[idx]
+            ans_sum = self.get_sum(a) 
+        return ans_sum
+
+        # Your code goes here
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+def main():
+
+    T = int(input())
+
+    while(T > 0):
+        sz = [int(x) for x in input().strip().split()]
+        n, k = sz[0], sz[1]
+        a = [int(x) for x in input().strip().split()]
+        ob=Solution()
+        print(ob.maximizeSum(a, n, k))
+
+        T -= 1
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+# } Driver Code Ends

@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t-->0)
+	{
+	    int n;
+	    cin>>n;
+	    int a[n];
+	    int b[n];
+
+	    for(int i=0;i<n;i++)
+	    {
+	        cin>>a[i];
+	        b[i]=i+1;
+	    }
+	    int temp;
+	    for(int i=n-1;i>=0;i--)
+	    {
+	      if(a[i]!=0)
+	        {
+	            temp=b[i-a[i]];
+	            for(int j=i-a[i];j<i;j++)
+	                b[j]=b[j+1];
+	            b[i]=temp;
+	         
+	        }
+	        
+	    }
+	    for(int i=0;i<n;i++)
+	    {
+	        cout<<b[i]<<" ";
+	    }
+	    cout<<"\n";
+	    	    
+	}
+	return 0;
+}

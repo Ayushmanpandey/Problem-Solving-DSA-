@@ -1,0 +1,22 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    int t , x ,y ,X,Y ;
+    int a ,b ,totA ,totB;
+    cin>> t;
+    
+    for(int i=1;i<=t;i++){
+        cin>>x>>y>>X>>Y;
+        totA = X/x;
+        totB = Y/y;
+        a = totA;
+        b= totB;
+        int c  = a+b;
+        cout<<c <<endl;
+    }
+    
+    return 0;
+}

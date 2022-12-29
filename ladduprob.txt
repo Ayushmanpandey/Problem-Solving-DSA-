@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+string str;
+int main()
+{
+    int caset,cas=0;scanf("%d",&caset);
+    while(caset--)
+    {
+        int n,mod,t,ans = 0;
+        cin>>n;
+        cin>>str;
+        if(str == "INDIAN") mod = 200;
+        else mod = 400;
+        for(int i=1;i<=n;i++) {
+            cin>>str;
+            if(str == "CONTEST_WON") {
+                cin>>t;
+                if(t > 20) t = 300;
+                else t = 300 + 20 - t;
+                ans += t;
+            }
+            else if(str == "CONTEST_HOSTED") {
+                ans += 50;
+            }
+            else if(str == "BUG_FOUND") {
+                cin>>t;
+                ans += t;
+            }
+            else if(str == "TOP_CONTRIBUTOR") {
+                ans += 300;
+            }
+ 
+        }
+        cout<<ans/mod <<endl;
+    }
+    return 0;
+}

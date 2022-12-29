@@ -1,0 +1,48 @@
+#check for triangle possible or not
+import java.util.*;
+
+class Dcoder
+
+{
+
+public static void main(String args[])
+
+{
+
+Scanner sc=new Scanner(System.in);
+
+System.out.println("Enter the three angles");
+
+int a1=sc.nextInt();
+
+int a2=sc.nextInt();
+
+int a3=sc.nextInt();
+
+if((a1+a2+a3)==180)
+
+{
+
+System.out.println("it is a valid triangle");
+
+if(a1<90 && a2<90 && a3<90)
+
+System.out.println("it is an acute angled triangle");
+
+else if(a1>90 || a2>90 || a3>90)
+
+System.out.println("it is an obtuse angled triangle");
+
+else
+
+System.out.println("it is a right angled triangle");
+
+}
+
+else
+
+System.out.println("it is not valid");
+
+}
+
+}

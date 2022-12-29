@@ -1,0 +1,23 @@
+
+//DOBLE POINTER METHOD
+class Solution {
+public:
+    bool validMountainArray(vector<int>& arr) {
+        int left = 0 ;
+        int n = arr.size();
+        int right = n-1 ;
+        while(left < n-1 && arr[left]< arr[left+1]){
+            left +=1;
+        }
+        while( right > 0 && arr[right - 1]> arr[right]){
+            right = right -1;
+         }
+        // BY FINDING INFLATION POINT METHOD  AT INFALTIO POINT BOTH POINTERS MEET
+        if(right == left && left >0 && right < n-1 ){
+            return true;
+        }
+        
+        
+        return false ;
+    }
+};

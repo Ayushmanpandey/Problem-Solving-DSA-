@@ -1,0 +1,11 @@
+def removeDuplicates(self,nums: List[int])-> int:
+	if len(nums) == 0 :
+		return 0 
+	
+	ip = 0 
+	for jp in range(len(nums)):
+		if nums[jp] != nums[ip]:
+			ip+=1
+			nums[ip] = nums[jp]
+	return ip+1
+	

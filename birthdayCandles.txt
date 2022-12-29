@@ -1,0 +1,2 @@
+res = candles.count(max(candles))
+return res

@@ -1,0 +1,14 @@
+# Enter your code here. Read input from STDIN. Print output to STDout
+n,m = map(int , input().split())
+n= map(int ,input().split()) # elements in array
+
+A = set(map(int , input().split()))#disjoint set A
+B = set(map(int , input().split()))#disjoint set B
+happiness = 0 #counter 
+for i in n:
+    if i in A :
+        happiness+=1
+    if i in B :
+        happiness-=1
+        
+print(happiness)

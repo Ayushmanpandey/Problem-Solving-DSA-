@@ -1,0 +1,16 @@
+# cook your dish here
+mem = {}
+def divide(n):
+    if n < 12:
+        return n
+    if n in mem:
+        return mem[n]
+    else:
+        mem[n] = max(n, divide(n // 2) + divide(n // 3) + divide(n // 4))
+        return mem[n]
+
+while True:
+    try:
+        print(divide(int(input())))
+    except:
+        break

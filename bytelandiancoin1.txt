@@ -1,0 +1,18 @@
+l={}
+def fun(n):
+    if n<12:
+        return n
+    if n in l:
+        return l[n]
+    x=fun(n//2)
+    y=fun(n//3)
+    z=fun(n//4)
+    w=max(x+y+z,n)
+    l[n]=w
+    return w
+while(True):
+    try:
+        n=int(input())
+        print(fun(n))
+    except:
+        break

@@ -1,0 +1,15 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+
+def findTriplets(A,N,Asize):
+    for i in range(0,Asize-2):
+        for j in range(i+1,Asize-1):
+            for k in range(j+1,Asize):
+                if(A[i]+A[j]+A[k] == N):
+                    print(A[i]," ",A[j]," ",A[k])
+                    
+
+A=[347,88,284,116,476,217,75,514,147]
+N= 878
+Asize = len(A)
+findTriplets(A,N,Asize)

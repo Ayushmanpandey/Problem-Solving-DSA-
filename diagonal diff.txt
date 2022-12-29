@@ -1,0 +1,11 @@
+ef diagonalDifference(arr):
+    # Write your code here 
+    sumdiag1 = sumdiag2 = diff =0 
+    for i in range(len(arr)):
+        for j in range(len(arr)):        
+            if i ==j :
+                sumdiag1+= arr[i][j]
+            if i== n-j-1:
+                sumdiag2+= arr[i][j]
+    diff = abs(sumdiag2 - sumdiag1)
+    return diff

@@ -1,0 +1,14 @@
+class Solution:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        #get the number of elements
+        n=len(nums)
+        #create a set with range[1,n]
+        ans=set()
+        for i in range(n):
+            ans.add(i+1)
+        #iterate through the nums array and discard from ans
+        #discard() removes element x from the set if the element is present.
+        for num in nums:
+            ans.discard(num)
+            
+        return ans

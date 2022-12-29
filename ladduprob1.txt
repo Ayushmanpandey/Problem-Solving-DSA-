@@ -1,0 +1,46 @@
+#include <iostream>
+#include<cstring>
+using namespace std;
+
+int main() {
+	long int t,i,j,haha,p,se,n;
+	char s[1000],origin[1000];
+	cin>>t;
+	for(i=0;i<t;i++)
+	{
+	    cin>>n>>origin;
+	    haha=0;
+	    for(j=0;j<n;j++)
+	    {
+	        cin>>s;
+	        
+	        if(strcmp(s,"CONTEST_WON")==0)
+	        {
+	            cin>>p;
+	            if(p<20)
+	            haha=haha+300+20-p;
+	            else
+	            haha=haha+300;
+	        }
+	        else if(strcmp(s,"TOP_CONTRIBUTOR")==0)
+	        {
+	            haha=haha+300;
+	        }
+	        else if(strcmp(s,"BUG_FOUND")==0)
+	        {
+	            cin>>se;
+	            haha=haha+se;
+	        }
+	        else if(strcmp(s,"CONTEST_HOSTED")==0)
+	        {
+	            haha=haha+50;
+	        }
+	        
+	    }
+	    
+	    if(strcmp(origin,"INDIAN")==0)
+	    cout<<haha/200<<endl;
+	    else
+	    cout<<haha/400<<endl;
+	}
+}

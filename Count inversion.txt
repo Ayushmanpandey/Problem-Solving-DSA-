@@ -1,0 +1,150 @@
+Prob: Count inversions
+ 
+Inversion Count: For an array, inversion count indicates how far (or close) the array is from being sorted. If array is already sorted then the inversion count is 0. If an array is sorted in the reverse order then the inversion count is the maximum. 
+Formally, two elements a[i] and a[j] form an inversion if a[i] > a[j] and i < j.
+ 
+
+Example 1:
+
+Input: N = 5, arr[] = {2, 4, 1, 3, 5}
+Output: 3
+Explanation: The sequence 2, 4, 1, 3, 5 
+has three inversions (2, 1), (4, 1), (4, 3).
+Example 2:
+
+Input: N = 5
+arr[] = {2, 3, 4, 5, 6}
+Output: 0
+Explanation: As the sequence is already 
+sorted so there is no inversion count.
+Example 3:
+
+Input: N = 3, arr[] = {10, 10, 10}
+Output: 0
+Explanation: As all the elements of array 
+are same, so there is no inversion count.
+Your Task:
+You don't need to read input or print anything. Your task is to complete the function inversionCount() which takes the array arr[] and the size of the array as inputs and returns the inversion count of the given array.
+
+Expected Time Complexity: O(NLogN).
+Expected Auxiliary Space: O(N).
+
+Constraints:
+1 ≤ N ≤ 5*105
+1 ≤ arr[i] ≤ 1018
+
+
+
+Sol 1:
+
+class Solution:
+    #User function Template for python3
+    
+    # arr[]: Input Array
+    # N : Size of the Array arr[]
+    #Function to count inversions in the array.
+    def inversionCount(self, arr, n):
+        count =0 
+        for i in range(n-1):
+            for j in range(i+1,n):
+                if arr[i]>arr[j]:
+                    count+=1
+        return count
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+import atexit
+import io
+import sys
+
+_INPUT_LINES = sys.stdin.read().splitlines()
+input = iter(_INPUT_LINES).__next__
+_OUTPUT_BUFFER = io.StringIO()
+sys.stdout = _OUTPUT_BUFFER
+
+@atexit.register
+
+def write():
+    sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
+
+if __name__=='__main__':
+    t = int(input())
+    for tt in range(t):
+        n = int(input())
+        a = list(map(int, input().strip().split()))
+        obj = Solution()
+        print(obj.inversionCount(a,n))
+# } Driver Code Ends
+
+Sol2 : Using binary index tree
+
+// { Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+ // } Driver Code Ends
+
+
+
+class BIT{
+  private:
+    vector<long long int>bits;
+  public:
+    BIT(long long int size){
+        bits.assign(size+1,0);
+    }
+    long long int sum(long long int i){
+        long long int res=0;
+        for(;i>0;i-=i&(-i))res+=bits[i];
+        return res;
+    }
+    void update(long long int i,long long int x){
+        for(;i<bits.size();i+=i&(-i))bits[i]+=x;
+    }
+};
+class Solution{
+  public:
+    long long int inversionCount(long long arr[], long long N)
+    {
+        map<long long int,int>mp;
+        BIT *bit=new BIT(N);
+        long long ans=0;
+        for(long long int i=0;i<N;i++)mp[arr[i]];
+        int cnt=1;
+        for(auto &el:mp)el.second=cnt++;
+        for(long long int i=0;i<N;i++)arr[i]= mp[arr[i]];
+        for(long long int i=0;i<N;i++){
+            ans+=bit->sum(N)-bit->sum(arr[i]);
+            bit->update(arr[i],1ll);
+        }
+        return ans;
+    }
+};
+
+
+
+// { Driver Code Starts.
+
+int main() {
+    
+    long long T;
+    cin >> T;
+    
+    while(T--){
+        long long N;
+        cin >> N;
+        
+        long long A[N];
+        for(long long i = 0;i<N;i++){
+            cin >> A[i];
+        }
+        Solution obj;
+        cout << obj.inversionCount(A,N) << endl;
+    }
+    
+    return 0;
+}
+  // } Driver Code Ends
